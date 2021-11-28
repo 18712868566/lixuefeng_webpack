@@ -5,7 +5,7 @@
     "main": "webpack.config.js",
     "scripts": {
         "build": "webpack --config webpack.config.production.js",
-        "server": "webpack serve",
+        "server": "webpack serve --config webpack.config.development.js",
         "dev": "webpack --config webpack.config.development.js"
     },
     "keywords": [],

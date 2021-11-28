@@ -12,10 +12,10 @@
  * 
  */
 
-// 设置全局 nodejs环境变量 - postcss-loader - browserslist 的编译方式
+// 设置全局 nodejs环境变量 - postcss-loader - browserslist 的编译方式 --处理css兼容  默认使用生产环境配置
 // development - 开发
 // production -生产 
-// process.env.NODE_ENV === 'development';
+process.env.NODE_ENV === 'development';
 
 // 生成html文件并插入打包后的js资源
 // 插件
@@ -233,10 +233,10 @@ module.exports = {
         // 运行后：
         // 9:1  warning  Unexpected console statement  no-console
         // 第9行 第一个字符 一个警告 ， 意外的控制台语句  -- 规则去eslint 查看no-console 规则 
-        new ESLintPlugin({
-            // 启用 ESLint 自动修复特性。
-            fix: true,
-        }),
+        // new ESLintPlugin({
+        //     // 启用 ESLint 自动修复特性。
+        //     fix: true,
+        // }),
         // 提取js中的css 为单独文件
         new MiniCssExtractPlugin({
             filename: 'css/build_[chunkhash:5].css',

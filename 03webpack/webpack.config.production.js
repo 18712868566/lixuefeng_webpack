@@ -12,7 +12,7 @@
  * 
  */
 
-// 设置全局 nodejs环境变量 - postcss-loader - browserslist 的编译方式
+// 设置全局 nodejs环境变量 - postcss-loader - browserslist 的编译方式 --处理css兼容  默认使用生产环境配置
 // development - 开发
 // production -生产 
 // process.env.NODE_ENV === 'development';

@@ -37,9 +37,9 @@ body {
     backface-visibility: hidden;
 }
 
-.box4 {
-    width: 200px;
-    height: 200px;
+.box5 {
+    width: 500px;
+    height: 100px;
     background: url(../images/1.jpeg) no-repeat 0 0 / 100% 100%;
     display: flex;
     transform: translate(0, 0);
