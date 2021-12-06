@@ -71,9 +71,35 @@ module.exports = {
                 use: [
                     // use数组中的loader执行顺序: 中右到左 ,从下到上,依次执行
                     // 创建style标签,将js中的样式资源进行插入,添加到head中
-                    'style-loader',
+                    // 'style-loader',
+                    MiniCssExtractPlugin.loader,
                     // 将css文件变成commonjs模块加载js中,里面内容是样式字符串
-                    'css-loader', //直接使用 和 postcss-loader 冲突 需要更改配置
+                    // 'css-loader',  //直接使用 和 postcss-loader 冲突 需要更改配置
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    /**
+                     * css 兼容性处理 ： postcss --> postcss-loader postcss-preset-env
+                     * 
+                     * postcss-preset-env 插件 帮 postcss 找到 package.json 中 borwserslist里的配置 ，通过配置加载指定的css兼容性配置
+                     * 
+                     * 
+                    "browserslist": {
+                        "production": [
+                        ">0.2%",
+                        "not dead",
+                        "not op_mini all"
+                        ],
+                        "development": [
+                        "last 1 chrome version",
+                        "last 1 firefox version",
+                        "last 1 safari version",
+                        "last 1 ie version"
+                        ]
+                    }
+                     */
+                    // 使用loader的默认配置
+                    // postcss-loader 
+                    //修改loader配置 - postcss.config.js 配置文件形式
+                    'postcss-loader',
                     // 编译sass
                     'sass-loader',
                     // 编译less
@@ -241,8 +267,8 @@ module.exports = {
             new TerserPlugin(), //压缩js代码
         ],
     },
-    // 编译后错误处理 - 查看错误来源 速度快调试友好
-    devtool: 'eval-source-map',
+    // 编译后错误处理 - 查看错误来源 - 适用于开发环境， 生产环境深入了解后使用
+    devtool: 'inline-source-map',
     // 开发服务器 devServer : 用来自动化，（自动编译，自动打开浏览器，自动刷新浏览器）模块热替换hot
     // cnpm i webpack-dev-server -D
     // 特点： 只会在内存中编译打包， 不会有任何输出 

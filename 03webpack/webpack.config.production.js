@@ -15,7 +15,7 @@
 // 设置全局 nodejs环境变量 - postcss-loader - browserslist 的编译方式 --处理css兼容  默认使用生产环境配置
 // development - 开发
 // production -生产 
-// process.env.NODE_ENV === 'development';
+process.env.NODE_ENV === 'production';
 
 // 生成html文件并插入打包后的js资源
 // 插件
@@ -267,8 +267,8 @@ module.exports = {
             new TerserPlugin(), //压缩js代码
         ],
     },
-    // 编译后错误处理 - 查看错误来源 - 适用于开发环境， 生产环境深入了解后使用
-    devtool: 'inline-source-map',
+    // 编译后错误代码准确信息 和 源代码的错误位置
+    devtool: 'source-map',
     // 开发服务器 devServer : 用来自动化，（自动编译，自动打开浏览器，自动刷新浏览器）模块热替换hot
     // cnpm i webpack-dev-server -D
     // 特点： 只会在内存中编译打包， 不会有任何输出 
