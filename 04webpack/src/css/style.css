@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: red;
+    color: #000;
+    font-size: 30px;
+    border-radius: 3px;
+    box-shadow: 10px 10px 5px #888;
+    user-select: none;
+}
+
+.autoplacement-example {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+    color: #12345678;
+    /* 使用 8 位十六进制数的颜色值 */
+}
+
+@keyframes myfirst {
+    from {
+        background: red;
+    }
+    to {
+        background: yellow;
+    }
+}
+
+.box5 {
+    width: 200px;
+    height: 200px;
+    background: url(../images/1.jpeg) no-repeat 0 0 / 100% 100%;
+    display: flex;
+    transform: translate(0, 0);
+    backface-visibility: hidden;
+}
+
+ :fullscreen {
+    width: auto;
+}
