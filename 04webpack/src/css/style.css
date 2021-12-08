@@ -20,7 +20,7 @@ body {
 
 @keyframes myfirst {
     from {
-        background: red;
+        background: pink;
     }
     to {
         background: yellow;

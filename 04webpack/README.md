@@ -201,8 +201,24 @@ webpack 仓库中包含一个 显示所有 devtool 变体效果的示例。这�
       --> source-map / cheap-module-souce-map
 
 
-      oneOf 配置loader
+      oneOf 配置loader 
 
+    // 处理js 时
+    // 开启bable 缓存 提升性能
+    // 第二次构建时,会读取之前的缓存 , 如果改变则只编译当前更改模块 , 其余不变模块从缓存中读取
+    cacheDirectory: true,
+
+    // 文件资源缓存
+
+    hash: 每次webpack构建时会生效,生产唯一一个hash值
+        问题.因为js和css使用一个hash值
+            如果重新打包,会导致所有缓存失效. (可能我却只改动一个文件)
+
+        使用 chunkhash: 根据chunk生产的hash值,如果打包来源于同一个chunk,那么hash值就一样
+            问题: js和css的hash值还是一样的
+            因为css 是在 js 中被引入的, 所有同属于一个chunk  (chunk是打包是生产的) 
+        
+        contenthash: 根据文件的内容生产hash值, 不同文件hash值是不一样的 , 只更新改完文件的 hash值
 ```
 
 

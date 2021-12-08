@@ -50,13 +50,13 @@ module.exports = {
     output: {
         publicPath: 'auto',
         // 输出的文件名
-        filename: 'js/build.js',
+        filename: 'js/build.[contenthash:5].js',
         // 输出路径
         // __dirname nodejs 变量 ， 代表当前文件的目录的绝对路径
         path: path.join(__dirname, 'build'),
         // webpack5 自定义 type= asset/resource 资源输入时自定义文件名
         // 方式一 ： 重命名输入资源
-        //assetModuleFilename: '[name]_[hash:6][ext][query]'
+        //assetModuleFilename: '[name]_[contenthash:6][ext][query]'
     },
     // loader 配置
     module: {
@@ -118,7 +118,7 @@ module.exports = {
                 //自动地在 resource 和 inline 之间进行选择：小于 8kb 的文件，将会视为 inline 模块类型，否则会被视为 resource 模块类型。
                 type: 'asset',
                 generator: {
-                    filename: 'images/[name]_[hash:5][ext][query]'
+                    filename: 'images/[name]_[contenthash:5][ext][query]'
                 },
                 // Rule.parser.dataUrlCondition.maxSize 选项来修改此条件：修改 判断要进行压缩的条件
                 parser: {
@@ -193,7 +193,7 @@ module.exports = {
                 test: /\.(ttf|eot|woft)$/i,
                 type: 'asset',
                 generator: {
-                    filename: 'font/[name]_[hash:5][ext][query]'
+                    filename: 'font/[name]_[contenthash:5][ext][query]'
                 },
             },
             // 处理音频文件
@@ -201,7 +201,7 @@ module.exports = {
                 test: /\.(mp3|wav)$/i,
                 type: 'asset',
                 generator: {
-                    filename: 'audio/[name]_[hash:5][ext][query]'
+                    filename: 'audio/[name]_[contenthash:5][ext][query]'
                 },
             },
             // 处理视频文件
@@ -209,7 +209,7 @@ module.exports = {
                 test: /\.(mp4)$/i,
                 type: 'asset',
                 generator: {
-                    filename: 'video/[name]_[hash:5][ext][query]'
+                    filename: 'video/[name]_[contenthash:5][ext][query]'
                 },
             },
             // 处理html文件中的img图片（负责引入img，从而能被url-loader进行处理）
@@ -236,7 +236,7 @@ module.exports = {
         }),
         // 提取js中的css 为单独文件
         new MiniCssExtractPlugin({
-            filename: 'css/build_[chunkhash:5].css',
+            filename: 'css/build_[contenthash:5].css',
         }),
         // 详细的插件配置
         // html-webpack-plugin
@@ -255,7 +255,10 @@ module.exports = {
         }),
         // 每次打包时，清理构建目录 build
         // 安装 cnpm i clean-webpack-plugin -D
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            dry: true,
+            verbose: true,
+        }),
     ],
     // 压缩代码
     optimization: {
