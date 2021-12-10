@@ -78,7 +78,7 @@ mini-css-extract-plugin
 兼容处理：
 有一些css3的属性，需要加上浏览器前缀才能兼容不同的浏览器。可以配置自动添加浏览器相关的前缀
 
-cnpm install postcss postcss-loader postcss-preset-env -D 
+cnpm install postcss postcss-loader postcss-preset-env -D
 
 "browserslist": {
   "development": [
@@ -114,7 +114,7 @@ npm install css-minimizer-webpack-plugin --save-dev
 你必须执行 `npm install babel-plugin-transform-runtime --save-dev` 来把它包含到你的项目中，
 也要使用 `npm install babel-runtime --save` 把 babel-runtime 安装为一个依赖。
 
-5. 压缩js 代码 
+5. 压缩js 代码
 
     首先，你需要安装
 
@@ -156,7 +156,7 @@ npm install css-minimizer-webpack-plugin --save-dev
 webpack 仓库中包含一个 显示所有 devtool 变体效果的示例。这些例子或许会有助于你理解这些差异之处。
 地址: https://github.com/webpack/webpack/tree/main/examples/source-map
 
-``` 
+```
 
     [inline-|hidden-|eval-][nosources-][cheap-[module-]]source-map
 
@@ -174,10 +174,10 @@ webpack 仓库中包含一个 显示所有 devtool 变体效果的示例。这�
     nosources-source-map：外部
       错误代码准确信息, 但是没有任何源代码信息
     cheap-source-map：外部
-      错误代码准确信息 和 源代码的错误位置 
+      错误代码准确信息 和 源代码的错误位置
       只能精确的行
     cheap-module-source-map：外部
-      错误代码准确信息 和 源代码的错误位置 
+      错误代码准确信息 和 源代码的错误位置
       module会将loader的source map加入
 
     内联 和 外部的区别：1. 外部生成了文件，内联没有 2. 内联构建速度更快
@@ -186,7 +186,7 @@ webpack 仓库中包含一个 显示所有 devtool 变体效果的示例。这�
       速度快(eval>inline>cheap>...)
         eval-cheap-souce-map
         eval-source-map
-      调试更友好  
+      调试更友好
         souce-map
         cheap-module-souce-map
         cheap-souce-map
@@ -199,6 +199,8 @@ webpack 仓库中包含一个 显示所有 devtool 变体效果的示例。这�
       hidden-source-map 只隐藏源代码，会提示构建后代码错误信息
 
       --> source-map / cheap-module-souce-map
+
+      继续优化 oneOf 看 04webpack
 ```
 
 

@@ -1,20 +1,20 @@
 /**
  * webpack.config.js webpack配置文件
- * 
+ *
  * 作用： 指示webpack干那些活
- * 
+ *
  * 所有构建工具都是基于node.js 平台运行， 模块化默认采用commonjs规范
- * 
- * 
+ *
+ *
  * loader: 1.下载  2.使用（配置loader）
- * 
+ *
  * plugins: 1.下载 2.引入  3.使用
- * 
+ *
  */
 
 // 设置全局 nodejs环境变量 - postcss-loader - browserslist 的编译方式 --处理css兼容  默认使用生产环境配置
 // development - 开发
-// production -生产 
+// production -生产
 process.env.NODE_ENV === 'development';
 
 // 生成html文件并插入打包后的js资源
@@ -27,7 +27,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // 这个插件将 CSS 提取到单独的文件中。它为每个包含 CSS 的 JS 文件创建一个 CSS 文件。
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-// 压缩css 
+// 压缩css
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 // js 语法检查
@@ -44,7 +44,7 @@ const path = require('path');
 module.exports = {
     // webpack配置
     // 入口文件
-    // 加入到入口文件 才能热更新 否则devServer hot 不剩效'./src/index.html' 
+    // 加入到入口文件 才能热更新 否则devServer hot 不剩效'./src/index.html'
     entry: ['./src/js/index.js', './src/index.html'],
     // 输出
     output: {
@@ -67,7 +67,7 @@ module.exports = {
             {
                 //正则表达式 - 匹配那些文件
                 test: /\.(css|less|s[ac]ss)$/i,
-                // 使用那些loader 
+                // 使用那些loader
                 use: [
                     // use数组中的loader执行顺序: 中右到左 ,从下到上,依次执行
                     // 创建style标签,将js中的样式资源进行插入,添加到head中
@@ -102,17 +102,17 @@ module.exports = {
                 }
             },
             /**
-             * 处理js  语法检查 eslint-loader eslint  -- webpack5 已废弃 使用 eslint-webpack-plugin 需要安装 eslint 
+             * 处理js  语法检查 eslint-loader eslint  -- webpack5 已废弃 使用 eslint-webpack-plugin 需要安装 eslint
              * 注意： 只检查自己的源代码， 第三方的库是不检查的
              * 用 exclude 排除
-             * 
+             *
              * {
              *   use:/\.js$/i,
              *   loader:'eslint-loader',
              *   options:{}
              * },
-             * 
-             * -- webpack5 已废弃 使用 eslint-webpack-plugin 需要安装 eslint 
+             *
+             * -- webpack5 已废弃 使用 eslint-webpack-plugin 需要安装 eslint
              * 设置检查规则：
              *      package.json中 eslintConfig中设置~
              *      使用airbnd规范(库)--> npm 搜索  eslint-config-airbnb-base  -不包含React 包含React的使用 eslint-config-aribnb
@@ -127,11 +127,11 @@ module.exports = {
                  * js兼容性处理， npm install -D babel-loader @babel/core @babel/preset-env
                  *      1. 基本的兼容性处理 --> @babel/preset-env
                  *      2. 全部兼容行处理  --> @babel/polyfill  cnpm i -D @babel/polyfill
-                 *      使用 直接在js 中 import 引入即可 
+                 *      使用 直接在js 中 import 引入即可
                  *      问题： 把所有的兼容性 代码全部引入  - 代码体积过大
                  *      已经废弃
-                 *      
-                 *      3. 需要做兼容性处理的就做，按需加载  --> core-js 
+                 *
+                 *      3. 需要做兼容性处理的就做，按需加载  --> core-js
                  */
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
@@ -198,6 +198,7 @@ module.exports = {
     // 模式
     mode: 'development', // 开发模式
     // mode: 'production', //生产模式
+
     // plugins 插件配置
     plugins: [
         // 每次打包时，清理构建目录 build
@@ -206,7 +207,7 @@ module.exports = {
         // eslint js 语法检查 -- 标准话
         // 运行后：
         // 9:1  warning  Unexpected console statement  no-console
-        // 第9行 第一个字符 一个警告 ， 意外的控制台语句  -- 规则去eslint 查看no-console 规则 
+        // 第9行 第一个字符 一个警告 ， 意外的控制台语句  -- 规则去eslint 查看no-console 规则
         // new ESLintPlugin({
         //     // 启用 ESLint 自动修复特性。
         //     fix: true,
@@ -245,8 +246,8 @@ module.exports = {
     devtool: 'eval-source-map',
     // 开发服务器 devServer : 用来自动化，（自动编译，自动打开浏览器，自动刷新浏览器）模块热替换hot
     // cnpm i webpack-dev-server -D
-    // 特点： 只会在内存中编译打包， 不会有任何输出 
-    // 启动devServer 指令， npx webpack serve 
+    // 特点： 只会在内存中编译打包， 不会有任何输出
+    // 启动devServer 指令， npx webpack serve
     devServer: {
         // 该配置项允许配置从目录提供静态文件的选项（默认是 'public' 文件夹）
         static: {
