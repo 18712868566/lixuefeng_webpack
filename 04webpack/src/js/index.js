@@ -9,7 +9,6 @@ import {
   name,
   play,
   age,
-  job,
 } from './a';
 
 function add(x, y) {
@@ -29,7 +28,6 @@ console.log(append(10, 10));
 console.log(name);
 console.log(play());
 console.log(age);
-console.log(job());
 
 const p = new Promise((res) => {
   setTimeout(() => {

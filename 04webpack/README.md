@@ -222,6 +222,26 @@ webpack 仓库中包含一个 显示所有 devtool 变体效果的示例。这�
 
         --> 让代码线上运行缓存更好使用, 提高加载速度, 线上更新缓存问题 不影响用户体验
 
+
+    优化
+    2021年12月12日22:15:26
+    tree shaking  (摇 - 树)  去除无用代码
+    ``` 
+    js
+    前提: 
+        1. 必须是用es6模块化
+        2. 开启production环境 自动执行
+        
+        作用: 
+            减小代码构建后的体积
+
+    css
+        在package.json 中配置
+        "sideEffects":false  所有代码都没有副作用,(都可以进行tree shaking)
+            问题: 可能会把 css / less / sass / @bable/polyfill (副作用) 文件干掉       
+            解决: "sideEffects":['*.css']  过滤
+    ```
+
 ```
 
 
