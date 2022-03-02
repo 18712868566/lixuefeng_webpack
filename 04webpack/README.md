@@ -222,7 +222,7 @@ webpack 仓库中包含一个 显示所有 devtool 变体效果的示例。这�
 
         --> 让代码线上运行缓存更好使用, 提高加载速度, 线上更新缓存问题 不影响用户体验
 
-
+-
     优化
     2021年12月12日22:15:26
     tree shaking  (摇 - 树)  去除无用代码
@@ -240,6 +240,7 @@ webpack 仓库中包含一个 显示所有 devtool 变体效果的示例。这�
         "sideEffects":false  所有代码都没有副作用,(都可以进行tree shaking)
             问题: 可能会把 css / less / sass / @bable/polyfill (副作用) 文件干掉       
             解决: "sideEffects":['*.css']  过滤
+        这里未配置
     ```
 
 ```
@@ -254,3 +255,18 @@ webpack 仓库中包含一个 显示所有 devtool 变体效果的示例。这�
 * 优化代码运行性能
 
 
+<!-- 2022年2月17日22:33:36 -->
+# code split 代码分割
+
+1. 单入口 || 多入口
+2. 可以将 node_modules中的代码单独打包一个chunk最终输出
+3. 自动分析多入口chunk中, 有没有公共的文件. 如果有会打包成一个单独的 chunk  例如: 都引入 jQuery 
+
+在配置文件中加入配置:
+```
+    optimization:{
+        splitChunks:{
+            chunks:'all'
+        }
+    }
+```
