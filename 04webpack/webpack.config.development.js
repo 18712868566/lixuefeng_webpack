@@ -41,6 +41,14 @@ module.exports = {
         // __dirname nodejs 变量 ， 代表当前文件的目录的绝对路径
         path: path.join(__dirname, 'build'),
     },
+    // code split 代码拆分
+    // 可以将 node_modules 中的库文件单独打包成一个chunk 最终输入
+    // 自动分析多入口文件中有没有公共依赖, 如果有会打包成一个单独的 chunk , 避免重复引入,只会打包一次
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     // loader 配置
     module: {
         rules: [
@@ -195,6 +203,15 @@ module.exports = {
     // 特点： 只会在内存中编译打包， 不会有任何输出
     // 启动devServer 指令， npx webpack serve
     devServer: {
+        // 本地代理请求接口
+        proxy: {
+            '/pre': {
+                target: 'https://soultidetw.herogame.com', // 目标服务器 
+                secure: false, //接受在 HTTPS 上运行且证书无效的后端服务器
+                changeOrigin: true, // 默认false，是否需要改变原始主机头为目标URL
+                logLevel: 'debug',
+            },
+        },
         // 该配置项允许配置从目录提供静态文件的选项（默认是 'public' 文件夹）
         static: {
             // 告诉服务器从哪里提供内容。这里的目录只得时 编译后的文件目录
