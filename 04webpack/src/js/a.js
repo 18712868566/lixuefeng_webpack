@@ -1,7 +1,8 @@
 export const name = '李学峰';
 
 export function play() {
-  console.log('this is play~~');
+  // eslint-disable-next-line
+    console.log('this is play~~');
 }
 
 const age = '500';

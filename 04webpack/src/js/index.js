@@ -4,7 +4,7 @@ import '../css/style.scss';
 
 import $ from 'jquery';
 
-import { Projet_Global_Parameter } from './webmain.js';
+import { ProjetGlobalParameter } from './webmain';
 // 处理js兼容 -- 更多新语法 安装后直接引入  --- 已经废弃
 // import '@babel/polyfill';
 import {
@@ -13,9 +13,11 @@ import {
   age,
 } from './a';
 
+// eslint-disable-next-line
 console.log($);
 
-console.log(Projet_Global_Parameter.getUserInfo());
+// eslint-disable-next-line
+console.log(ProjetGlobalParameter.getUserInfo());
 
 function add(x, y) {
   return x * y;
@@ -26,15 +28,18 @@ function add(x, y) {
 // 下一行eslint所有的规则都失效 （下一行不进行eslist检查）
 // eslint-disable-next-line
 console.log(add(2, 5));
+// eslint-disable-next-line
 console.log(add(5, 5));
 
 // es6 箭头函数
 const append = (x, y) => x * y;
-
+// eslint-disable-next-line
 console.log(append(10, 10));
-
+// eslint-disable-next-line
 console.log(name);
+// eslint-disable-next-line
 console.log(play());
+// eslint-disable-next-line
 console.log(age);
 
 const p = new Promise((res) => {
@@ -47,7 +52,9 @@ const p = new Promise((res) => {
 });
 
 p.then((value) => { // 成功
-  console.log(value);
+  // eslint-disable-next-line
+    console.log(value);
 }, (reason) => { // 错误
-  console.error(reason);
+  // eslint-disable-next-line
+    console.error(reason);
 });

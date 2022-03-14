@@ -19,23 +19,25 @@ const instance = axios.create({
 // 添加请求拦截器
 instance.interceptors.request.use((config) => {
   // 在发送请求之前做些什么
-  console.log('loading');
+  // eslint-disable-next-line
+    console.log('loading');
 
   return config;
 }, (error) =>
-  // 对请求错误做些什么
+// 对请求错误做些什么
   Promise.reject(error));
 
 // 添加响应拦截器
 instance.interceptors.response.use((response) => {
   // 对响应数据做点什么
-  console.log('loading end!');
+  // eslint-disable-next-line
+    console.log('loading end!');
   return response;
 }, (error) =>
-  // 对响应错误做点什么
+// 对响应错误做点什么
   Promise.reject(error));
 /* ======================= $axios end ======================= * */
-var Projet_Global_Parameter = {
+export const ProjetGlobalParameter = {
   // 重复点击开关
   bOff: true, // 自定义开关 布尔值
   bEmail: null, // 是否是一个邮箱 布尔值
@@ -48,7 +50,8 @@ var Projet_Global_Parameter = {
   },
   // 获取返回链接的参数对象
   getUrlData() {
-    url = window.location.href; // 获取当前页面的url
+    var arr;
+    const url = window.location.href; // 获取当前页面的url
     // console.log(url)
     if (url.indexOf('?role_id') == -1) {
       arr = url;
@@ -80,7 +83,8 @@ var Projet_Global_Parameter = {
           Projet_Global_Parameter.upData = '';
         } else {
           Projet_Global_Parameter.upData = Projet_Global_Parameter.aUrlData[0];
-          console.log(`看见参数了${Projet_Global_Parameter.upData}`);
+          // eslint-disable-next-line
+                    console.log(`看见参数了${Projet_Global_Parameter.upData}`);
         }
       }
     }
@@ -105,10 +109,11 @@ var Projet_Global_Parameter = {
       selection.removeAllRanges(); // 移除所有range
       selection.addRange(range); // 添加range
       /* if(selection.setBaseAndExtent){
-                   selection.setBaseAndExtent(text, 0, text, 1);
-                   } */
+                                           selection.setBaseAndExtent(text, 0, text, 1);
+                                           } */
     } else {
-      console.log('请稍后再试');
+      // eslint-disable-next-line
+            console.log('请稍后再试');
     }
   },
   // 校验邮箱
@@ -136,7 +141,8 @@ var Projet_Global_Parameter = {
   // 获取用户信息
   async getUserInfo() {
     const res = await instance.post('/pre/get-user-info');
-    console.log(res.data);
+    // eslint-disable-next-line
+        console.log(res.data);
     const { data } = res.data;
     if (res.data.code == 0) {
       // 登陆状态
@@ -145,10 +151,10 @@ var Projet_Global_Parameter = {
       sessionStorage.setItem('sess-isNew', JSON.stringify(data.user_info.is_new));
       // 分享状态
       sessionStorage.setItem('sess-isShare', JSON.stringify(data.user_info.is_share));
-
-      console.log(data.user_info.is_watch_send);
-
-      console.log($('.box5'));
+      // eslint-disable-next-line
+            console.log(data.user_info.is_watch_send);
+      // eslint-disable-next-line
+            console.log($('.box5'));
     }
   },
   // 相加函数
@@ -156,5 +162,3 @@ var Projet_Global_Parameter = {
     return a + b;
   },
 };
-
-export { Projet_Global_Parameter };

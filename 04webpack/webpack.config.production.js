@@ -50,13 +50,23 @@ module.exports = {
     output: {
         publicPath: 'auto',
         // 输出的文件名
-        filename: 'js/build.[contenthash:5].js',
+        filename: 'js/[name].[contenthash:5].js',
         // 输出路径
         // __dirname nodejs 变量 ， 代表当前文件的目录的绝对路径
         path: path.join(__dirname, 'build'),
         // webpack5 自定义 type= asset/resource 资源输入时自定义文件名
         // 方式一 ： 重命名输入资源
         //assetModuleFilename: '[name]_[contenthash:6][ext][query]'
+    },
+    // code split 代码拆分
+    // 可以将 node_modules 中的库文件单独打包成一个chunk 最终输入
+    // 自动分析多入口文件中有没有公共依赖, 如果有会打包成一个单独的 chunk , 避免重复引入,只会打包一次
+    optimization: {
+        splitChunks: {
+            // include all types of chunks
+            chunks: 'all',
+        },
+        mangleExports: true,
     },
     // loader 配置
     module: {
@@ -230,10 +240,10 @@ module.exports = {
         // 运行后：
         // 9:1  warning  Unexpected console statement  no-console
         // 第9行 第一个字符 一个警告 ， 意外的控制台语句  -- 规则去eslint 查看no-console 规则
-        new ESLintPlugin({
-            // 启用 ESLint 自动修复特性。
-            fix: true,
-        }),
+        // new ESLintPlugin({
+        //     // 启用 ESLint 自动修复特性。
+        //     fix: true,
+        // }),
         // 提取js中的css 为单独文件
         new MiniCssExtractPlugin({
             filename: 'css/build_[contenthash:5].css',
